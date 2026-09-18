@@ -34,3 +34,18 @@ Concise log of every action taken. Newest at bottom.
 - Enemy.prefab: tag Enemy
 - Player: added PlayerHealth
 - saved scene
+- commit+push: M1 complete
+
+## M2
+- script: WeaponData.cs (SO: damage, cooldown, projectileSpeed, range, projectilePrefab)
+- script: EnemyHealth.cs (hp 30, TakeDamage → Destroy at 0)
+- script: Projectile.cs (Init dir/speed/dmg, 3s life, on EnemyHealth trigger → damage + destroy)
+- script: Weapon.cs (cooldown timer, OverlapCircleAll nearest enemy, spawn projectile)
+- layer: Projectile (10)
+- 2D collision matrix: Projectile x Player/Projectile/Default = off
+- prefab: Prefabs/Projectile.prefab (yellow square 0.3, layer Projectile, rb kinematic, trigger, Projectile)
+- SO: ScriptableObjects/BasicShot.asset (defaults, prefab ← Projectile)
+- Enemy.prefab: added EnemyHealth
+- Player: added Weapon, data ← BasicShot, enemyMask ← Enemy
+- saved scene
+- tested: enemies die to auto-fire ✓
