@@ -6,17 +6,20 @@ public class Weapon : MonoBehaviour
     [SerializeField] LayerMask enemyMask;
 
     float timer;
+    PlayerStats stats;
+
+    void Awake() => stats = GetComponent<PlayerStats>();
 
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer < data.cooldown) return;
+        if (timer < data.cooldown * stats.cooldownMult) return;
         var target = Nearest();
         if (target == null) return;
         timer = 0f;
         Vector2 dir = (target.position - transform.position).normalized;
         var p = Instantiate(data.projectilePrefab, transform.position, Quaternion.identity);
-        p.GetComponent<Projectile>().Init(dir, data.projectileSpeed, data.damage);
+        p.GetComponent<Projectile>().Init(dir, data.projectileSpeed, data.damage * stats.damageMult);
     }
 
     Transform Nearest()

@@ -194,3 +194,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   hp: 30
+  gemPrefab: {fileID: 8467707375049040477, guid: 8217124963ad8324fb486ac243924b94, type: 3}

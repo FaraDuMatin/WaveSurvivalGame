@@ -49,3 +49,25 @@ Concise log of every action taken. Newest at bottom.
 - Player: added Weapon, data ← BasicShot, enemyMask ← Enemy
 - saved scene
 - tested: enemies die to auto-fire ✓
+- commit+push: M2 complete
+
+## M3
+- script: PlayerStats.cs (damageMult, cooldownMult, moveSpeed, maxHp, pickupRadius)
+- script: UpgradeData.cs (SO: title, Stat enum, amount, Apply(stats))
+- script: PlayerLevel.cs (xp curve base 10 ×1.3, OnLevelUp event)
+- script: XpGem.cs (magnet in pickupRadius, AddXp on reach, destroy)
+- script: UpgradeManager.cs (on level up: pick 3 random, show panel, timeScale 0; click → Apply, resume)
+- PlayerController: speed ← stats.moveSpeed
+- PlayerHealth: hp ← stats.maxHp
+- Weapon: cooldown × stats.cooldownMult, damage × stats.damageMult
+- EnemyHealth: gemPrefab, spawn gem on death
+- prefab: Prefabs/XpGem.prefab (green 0.25 square, XpGem, no physics)
+- Enemy.prefab: gemPrefab ← XpGem
+- SO: Upgrade_Damage/Cooldown/Speed/Max/Pickup .asset
+- Player: added PlayerStats, PlayerLevel
+- UI: Canvas > LevelUpPanel (dark overlay) > Button0-2 (legacy Text)
+- EventSystem + InputSystemUIInputModule
+- UpgradeManager GO: pool ← 5 upgrades, panel, buttons
+- saved scene
+- renamed upgrades: Cooldown → "Fire rate +10%", Pickup → "Magnet range +1"
+- tested: XP → level up → pick upgrade ✓
