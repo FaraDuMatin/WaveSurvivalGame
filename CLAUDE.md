@@ -37,5 +37,5 @@ No big line of code. code is MINIMAL. it's really important. if a line of code i
 - Milestone-by-milestone plan lives in `ROADMAP.md`
 
 ## Logging & git
-- Log every action in `STEPS.md`, one terse line each ("added rb", "layer Enemy"). No explanations.
+- Log EVERY action in `STEPS.md`, one terse line each ("added rb", "layer Enemy"). Never skip a step, no explanations.
 - Commit + push after each chunk of work. Never add "Co-Authored-By" lines to commits.
