@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd4a71a11c315b4e89a7c4587cb93a4, type: 3}
+  m_Name: Weapon_Boomerang
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  title: Boomerang
+  weaponPrefab: {fileID: 5782589860713743234, guid: 719c685edb01a634f9036b5be0fdb26d, type: 3}
+  projectilePrefab: {fileID: 7924618260302675680, guid: ec329e2fe1cc07a4f9b789451a089f56, type: 3}
+  damage: 25
+  cooldown: 2
+  projectileSpeed: 8
+  range: 8
+  maxLevel: 5
+  damagePerLevel: 0.25
+  extraProjectileAtLevels: 0300000005000000
+  spreadAngle: 15
+  rangePerLevel: 0

@@ -113,3 +113,21 @@ Concise log of every action taken. Newest at bottom.
 - Weapon.cs: + Count prop (1 + levels reached)
 - ShotWeapon: fires Count projectiles in a fan
 - tested: weapon holder, Shot levels, multi-projectile ✓
+- commit+push: M4b
+
+## M4c — 5 weapons
+- WeaponData: + rangePerLevel
+- Weapon.cs: + Range prop, Tick() virtual called from Update
+- script: Hitbox.cs (trigger stay → Enemy.TakeDamage, per-enemy rehit delay 0.5)
+- script: OrbitWeapon.cs (Count blades as children at Range, rotate 180°/s, refresh dmg each cooldown)
+- script: AuraWeapon.cs (OverlapCircle all in Range every cooldown, circle visual scaled to Range)
+- script: Boomerang.cs (out 0.6s then home to owner, spin, destroy on return) + BoomerangWeapon.cs (fan like Shot)
+- script: LightningWeapon.cs (Count random enemies in Range, instant dmg, 0.15s bolt fx)
+- prefabs: Blade (cyan, hitbox), AuraVisual (blue circle a.25, order -1), BoomerangProj (magenta, hitbox+Boomerang), LightningFX (white bar)
+- prefabs: Weapon_Orbit/Aura/Boomerang/Lightning
+- SO: Weapon_Orbit (15dmg, r1.5, +blade lv2-5), Weapon_Aura (8dmg/0.5s, r2, +15% r/lv), Weapon_Boomerang (25dmg, 2s, +1 lv3,5), Weapon_Lightning (40dmg, 1.5s, r9, +1 lv2-5)
+- SO: Upgrade_WOrbit/WAura/WBoomerang/WLightning
+- UpgradeManager.pool: + 4 weapon upgrades (10 total)
+- (was in play mode during asset creation → stopped, re-applied pool, saved)
+- saved scene
+- tested: 5 weapons ✓ (fun)

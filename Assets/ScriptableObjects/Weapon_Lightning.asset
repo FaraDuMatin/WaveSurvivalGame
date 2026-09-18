@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd4a71a11c315b4e89a7c4587cb93a4, type: 3}
+  m_Name: Weapon_Lightning
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  title: Lightning
+  weaponPrefab: {fileID: 7602049380890883656, guid: 0dc09d0be9ccad048a90d30b161a6b04, type: 3}
+  projectilePrefab: {fileID: 5307724859177108814, guid: 37e73b3f1b6ac7f4d8cc2feee15b9dc4, type: 3}
+  damage: 40
+  cooldown: 1.5
+  projectileSpeed: 0
+  range: 9
+  maxLevel: 5
+  damagePerLevel: 0.25
+  extraProjectileAtLevels: 02000000030000000400000005000000
+  spreadAngle: 15
+  rangePerLevel: 0

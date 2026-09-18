@@ -13,6 +13,7 @@ public abstract class Weapon : MonoBehaviour
 
     protected float Damage => Data.damage * stats.damageMult * (1f + Data.damagePerLevel * (Level - 1));
     protected float Cooldown => Data.cooldown * stats.cooldownMult;
+    protected float Range => Data.range * (1f + Data.rangePerLevel * (Level - 1));
     protected int Count
     {
         get { int n = 1; foreach (var l in Data.extraProjectileAtLevels) if (Level >= l) n++; return n; }
@@ -20,18 +21,20 @@ public abstract class Weapon : MonoBehaviour
 
     void Update()
     {
+        Tick();
         timer += Time.deltaTime;
         if (timer < Cooldown) return;
         if (Fire()) timer = 0f;
     }
 
     protected abstract bool Fire();
+    protected virtual void Tick() { }
 
     protected Transform Nearest()
     {
         Transform best = null;
         float bestDist = float.MaxValue;
-        foreach (var c in Physics2D.OverlapCircleAll(transform.position, Data.range, EnemyMask))
+        foreach (var c in Physics2D.OverlapCircleAll(transform.position, Range, EnemyMask))
         {
             float d = (c.transform.position - transform.position).sqrMagnitude;
             if (d < bestDist) { bestDist = d; best = c.transform; }

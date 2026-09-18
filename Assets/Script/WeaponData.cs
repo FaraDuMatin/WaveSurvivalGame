@@ -14,4 +14,5 @@ public class WeaponData : ScriptableObject
     public float damagePerLevel = 0.25f;
     public int[] extraProjectileAtLevels = { 2, 4 };
     public float spreadAngle = 15f;
+    public float rangePerLevel;
 }
