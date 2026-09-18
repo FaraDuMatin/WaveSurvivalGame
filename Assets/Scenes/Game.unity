@@ -1067,6 +1067,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3b26632fce3b135498711b2a8f7d7808, type: 2}
   - {fileID: 11400000, guid: be109de0698732b4a98761effadabb64, type: 2}
   - {fileID: 11400000, guid: 93f74ea171de84f4899fe475117e2ff8, type: 2}
+  - {fileID: 11400000, guid: d4abddfe1971bed4b9109a6a18e51da4, type: 2}
+  - {fileID: 11400000, guid: b0f16bdee284b2a4e91762c9549feb49, type: 2}
+  - {fileID: 11400000, guid: 527febaf439fc634da4aa1eff6fbf74a, type: 2}
+  - {fileID: 11400000, guid: 8b34fea971730054ba4f05b2dfb425aa, type: 2}
+  - {fileID: 11400000, guid: 204acf3a788d2c445b6eaae7a55f12da, type: 2}
+  - {fileID: 11400000, guid: fb7d9eb030f2b5f489e407f9f5241b71, type: 2}
+  - {fileID: 11400000, guid: 4141a753bbd8f16458887470cf356758, type: 2}
+  - {fileID: 11400000, guid: 3a3501d13917a9d45b1d4f26d1335689, type: 2}
+  - {fileID: 11400000, guid: f1d68303e78eb9f408508d80be3ef481, type: 2}
   panel: {fileID: 1417767566}
   buttons:
   - {fileID: 250616837}
@@ -1550,6 +1559,11 @@ MonoBehaviour:
   moveSpeed: 5
   maxHp: 100
   pickupRadius: 3
+  armor: 0
+  regen: 0
+  xpMult: 1
+  extraProjectiles: 0
+  areaMult: 1
 --- !u!114 &2143197443
 MonoBehaviour:
   m_ObjectHideFlags: 0

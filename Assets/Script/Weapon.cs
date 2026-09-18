@@ -13,10 +13,10 @@ public abstract class Weapon : MonoBehaviour
 
     protected float Damage => Data.damage * stats.damageMult * (1f + Data.damagePerLevel * (Level - 1));
     protected float Cooldown => Data.cooldown * stats.cooldownMult;
-    protected float Range => Data.range * (1f + Data.rangePerLevel * (Level - 1));
+    protected float Range => Data.range * (1f + Data.rangePerLevel * (Level - 1)) * stats.areaMult;
     protected int Count
     {
-        get { int n = 1; foreach (var l in Data.extraProjectileAtLevels) if (Level >= l) n++; return n; }
+        get { int n = 1 + stats.extraProjectiles; foreach (var l in Data.extraProjectileAtLevels) if (Level >= l) n++; return n; }
     }
 
     void Update()

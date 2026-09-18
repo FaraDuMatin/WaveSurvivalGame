@@ -15,7 +15,7 @@ public class PlayerLevel : MonoBehaviour
 
     public void AddXp(float amount)
     {
-        xp += amount;
+        xp += amount * GetComponent<PlayerStats>().xpMult;
         while (xp >= xpToNext)
         {
             xp -= xpToNext;

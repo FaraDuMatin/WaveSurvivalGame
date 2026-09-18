@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum Stat { Damage, Cooldown, MoveSpeed, MaxHp, PickupRadius }
+public enum Stat { Damage, Cooldown, MoveSpeed, MaxHp, PickupRadius, Armor, Regen, XpGain, Projectiles, Area }
 
 [CreateAssetMenu(menuName = "Data/Upgrade")]
 public class UpgradeData : ScriptableObject
@@ -32,8 +32,13 @@ public class UpgradeData : ScriptableObject
             case Stat.Damage: s.damageMult += amount; break;
             case Stat.Cooldown: s.cooldownMult -= amount; break;
             case Stat.MoveSpeed: s.moveSpeed += amount; break;
-            case Stat.MaxHp: s.maxHp += amount; break;
+            case Stat.MaxHp: s.maxHp += amount; s.GetComponent<PlayerHealth>().Heal(amount); break;
             case Stat.PickupRadius: s.pickupRadius += amount; break;
+            case Stat.Armor: s.armor += amount; break;
+            case Stat.Regen: s.regen += amount; break;
+            case Stat.XpGain: s.xpMult += amount; break;
+            case Stat.Projectiles: s.extraProjectiles += (int)amount; break;
+            case Stat.Area: s.areaMult += amount; break;
         }
     }
 }
