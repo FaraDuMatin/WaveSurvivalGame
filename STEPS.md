@@ -93,3 +93,23 @@ Concise log of every action taken. Newest at bottom.
 - BUG: Enemy.gemPrefab unassigned on prefab (lost when missing-script slot removed) → enemies never died
 - Enemy.prefab: gemPrefab ← XpGem (re-assigned, verified)
 - tested: 3 enemy types, ramp, cap ✓
+- commit+push: M4a
+
+## M4b — weapon architecture
+- WeaponData.cs: + title, weaponPrefab, maxLevel 5, damagePerLevel 0.25
+- Weapon.cs: now abstract base (Init, Level, Damage/Cooldown props, Update timer → Fire(), Nearest()); enemyMask hardcoded layer 9
+- script: ShotWeapon.cs (Weapon subclass, fires projectile at nearest)
+- script: WeaponHolder.cs (starting weapon, list, Get/Add/Upgrade)
+- UpgradeData.cs: + weapon field, Title(holder), Available(holder), Apply(holder, stats)
+- UpgradeManager.cs: filters Available, 3 unique picks, hides unused buttons
+- prefab: Prefabs/Weapon_Shot.prefab (empty + ShotWeapon)
+- BasicShot: title "Shot", weaponPrefab ← Weapon_Shot
+- Player: removed Weapon, added WeaponHolder (starting ← BasicShot)
+- Player: stuck abstract Weapon slot → removed by editing Game.unity YAML, reloaded scene
+- SO: Upgrade_WShot.asset (weapon ← BasicShot)
+- UpgradeManager.pool: + Upgrade_WShot
+- saved scene
+- WeaponData: + extraProjectileAtLevels {2,4}, spreadAngle 15
+- Weapon.cs: + Count prop (1 + levels reached)
+- ShotWeapon: fires Count projectiles in a fan
+- tested: weapon holder, Shot levels, multi-projectile ✓

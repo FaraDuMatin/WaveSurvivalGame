@@ -1066,6 +1066,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 262d011f50ad3ba439b5b9aac64afef4, type: 2}
   - {fileID: 11400000, guid: 3b26632fce3b135498711b2a8f7d7808, type: 2}
   - {fileID: 11400000, guid: be109de0698732b4a98761effadabb64, type: 2}
+  - {fileID: 11400000, guid: 93f74ea171de84f4899fe475117e2ff8, type: 2}
   panel: {fileID: 1417767566}
   buttons:
   - {fileID: 250616837}
@@ -1336,9 +1337,9 @@ GameObject:
   - component: {fileID: 2143197437}
   - component: {fileID: 2143197436}
   - component: {fileID: 2143197439}
-  - component: {fileID: 2143197440}
   - component: {fileID: 2143197442}
   - component: {fileID: 2143197441}
+  - component: {fileID: 2143197443}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1518,22 +1519,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f18bcc7490fdf41b9667df664567d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
---- !u!114 &2143197440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143197433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9d98f606f83e5d4eab7807289ce875b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  data: {fileID: 11400000, guid: 40827ca75a626184b8af4eb167840011, type: 2}
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!114 &2143197441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1565,6 +1550,20 @@ MonoBehaviour:
   moveSpeed: 5
   maxHp: 100
   pickupRadius: 3
+--- !u!114 &2143197443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143197433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8cc1a9e66996d548b0fc0ee2ef04c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponHolder
+  starting: {fileID: 11400000, guid: 40827ca75a626184b8af4eb167840011, type: 2}
+  Weapons: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

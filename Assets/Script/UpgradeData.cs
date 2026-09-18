@@ -8,9 +8,25 @@ public class UpgradeData : ScriptableObject
     public string title;
     public Stat stat;
     public float amount;
+    public WeaponData weapon;
 
-    public void Apply(PlayerStats s)
+    public string Title(WeaponHolder h)
     {
+        if (weapon == null) return title;
+        var w = h.Get(weapon);
+        return w == null ? "New: " + weapon.title : weapon.title + " Lv" + (w.Level + 1);
+    }
+
+    public bool Available(WeaponHolder h)
+    {
+        if (weapon == null) return true;
+        var w = h.Get(weapon);
+        return w == null || w.Level < weapon.maxLevel;
+    }
+
+    public void Apply(WeaponHolder h, PlayerStats s)
+    {
+        if (weapon != null) { h.Upgrade(weapon); return; }
         switch (stat)
         {
             case Stat.Damage: s.damageMult += amount; break;

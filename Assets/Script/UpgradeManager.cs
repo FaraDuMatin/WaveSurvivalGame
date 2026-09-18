@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,12 +9,14 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] Button[] buttons;
 
     PlayerStats stats;
-    UpgradeData[] offered = new UpgradeData[3];
+    WeaponHolder holder;
+    List<UpgradeData> offered = new();
 
     void Start()
     {
         var player = GameObject.FindWithTag("Player");
         stats = player.GetComponent<PlayerStats>();
+        holder = player.GetComponent<WeaponHolder>();
         player.GetComponent<PlayerLevel>().OnLevelUp += Show;
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -25,10 +28,18 @@ public class UpgradeManager : MonoBehaviour
 
     void Show()
     {
-        for (int i = 0; i < 3; i++)
+        var available = new List<UpgradeData>();
+        foreach (var u in pool) if (u.Available(holder)) available.Add(u);
+        offered.Clear();
+        for (int i = 0; i < buttons.Length; i++)
         {
-            offered[i] = pool[Random.Range(0, pool.Length)];
-            buttons[i].GetComponentInChildren<Text>().text = offered[i].title;
+            bool has = available.Count > 0;
+            buttons[i].gameObject.SetActive(has);
+            if (!has) continue;
+            var u = available[Random.Range(0, available.Count)];
+            available.Remove(u);
+            offered.Add(u);
+            buttons[i].GetComponentInChildren<Text>().text = u.Title(holder);
         }
         panel.SetActive(true);
         Time.timeScale = 0f;
@@ -36,7 +47,7 @@ public class UpgradeManager : MonoBehaviour
 
     void Pick(int i)
     {
-        offered[i].Apply(stats);
+        offered[i].Apply(holder, stats);
         panel.SetActive(false);
         Time.timeScale = 1f;
     }

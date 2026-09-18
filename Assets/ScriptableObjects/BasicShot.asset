@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd4a71a11c315b4e89a7c4587cb93a4, type: 3}
   m_Name: BasicShot
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  title: Shot
+  weaponPrefab: {fileID: 6056860209429770228, guid: 11a8ba69f28a4214ca5a31f4d4a74704, type: 3}
+  projectilePrefab: {fileID: 5158017131787012159, guid: 6d6383fedcfc5174a9f700f98462a528, type: 3}
   damage: 30
   cooldown: 1
   projectileSpeed: 10
   range: 8
-  projectilePrefab: {fileID: 5158017131787012159, guid: 6d6383fedcfc5174a9f700f98462a528, type: 3}
+  maxLevel: 5
+  damagePerLevel: 0.25

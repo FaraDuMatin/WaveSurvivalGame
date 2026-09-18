@@ -1,32 +1,37 @@
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField] WeaponData data;
-    [SerializeField] LayerMask enemyMask;
+    public WeaponData Data { get; private set; }
+    public int Level = 1;
 
+    protected PlayerStats stats;
+    protected static readonly int EnemyMask = 1 << 9;
     float timer;
-    PlayerStats stats;
 
-    void Awake() => stats = GetComponent<PlayerStats>();
+    public void Init(WeaponData data, PlayerStats s) { Data = data; stats = s; }
+
+    protected float Damage => Data.damage * stats.damageMult * (1f + Data.damagePerLevel * (Level - 1));
+    protected float Cooldown => Data.cooldown * stats.cooldownMult;
+    protected int Count
+    {
+        get { int n = 1; foreach (var l in Data.extraProjectileAtLevels) if (Level >= l) n++; return n; }
+    }
 
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer < data.cooldown * stats.cooldownMult) return;
-        var target = Nearest();
-        if (target == null) return;
-        timer = 0f;
-        Vector2 dir = (target.position - transform.position).normalized;
-        var p = Instantiate(data.projectilePrefab, transform.position, Quaternion.identity);
-        p.GetComponent<Projectile>().Init(dir, data.projectileSpeed, data.damage * stats.damageMult);
+        if (timer < Cooldown) return;
+        if (Fire()) timer = 0f;
     }
 
-    Transform Nearest()
+    protected abstract bool Fire();
+
+    protected Transform Nearest()
     {
         Transform best = null;
         float bestDist = float.MaxValue;
-        foreach (var c in Physics2D.OverlapCircleAll(transform.position, data.range, enemyMask))
+        foreach (var c in Physics2D.OverlapCircleAll(transform.position, Data.range, EnemyMask))
         {
             float d = (c.transform.position - transform.position).sqrMagnitude;
             if (d < bestDist) { bestDist = d; best = c.transform; }
