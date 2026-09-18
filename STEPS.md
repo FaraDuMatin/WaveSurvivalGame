@@ -142,3 +142,4 @@ Concise log of every action taken. Newest at bottom.
 - SO: Upgrade_Armor (+5), Upgrade_Regen (+1/s), Upgrade_XP (+20%), Upgrade_1 (+1 proj), Upgrade_Area (+15%)
 - UpgradeManager.pool: + 5 (15 total: 10 passive + 5 weapon)
 - stopped play mode (user was playing), saved scene
+- commit+push: M4 complete
