@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd4a71a11c315b4e89a7c4587cb93a4, type: 3}
   m_Name: BasicShot
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  damage: 10
+  damage: 30
   cooldown: 1
   projectileSpeed: 10
   range: 8

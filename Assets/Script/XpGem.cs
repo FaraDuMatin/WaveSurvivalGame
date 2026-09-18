@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class XpGem : MonoBehaviour
 {
-    [SerializeField] float value = 5f;
+    public float value = 5f;
     [SerializeField] float magnetSpeed = 8f;
 
     Transform player;

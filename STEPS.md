@@ -71,3 +71,25 @@ Concise log of every action taken. Newest at bottom.
 - saved scene
 - renamed upgrades: Cooldown → "Fire rate +10%", Pickup → "Magnet range +1"
 - tested: XP → level up → pick upgrade ✓
+- commit+push: M3 complete
+
+## M4a — enemy variety + difficulty
+- script: EnemyData.cs (SO: hp, speed, dps, xp, scale, color, unlockTime)
+- Enemy.cs: merged EnemyHealth into it, Init(EnemyData), reads Data.speed, drops gem w/ Data.xp, Alive++/-- on enable/disable
+- deleted EnemyHealth.cs
+- EnemySpawner.cs: interval lerps 1→0.2s over 300s, maxAlive 300, picks random unlocked type
+- Projectile: EnemyHealth → Enemy
+- XpGem: value public
+- PlayerHealth: dps ← Enemy.Data.damagePerSecond
+- SO: Enemy_Grunt (30hp, 2spd, t0), Enemy_Runner (15hp, 4spd, small orange, t60), Enemy_Tank (150hp, 1.2spd, big purple, t120)
+- Enemy.prefab: gemPrefab ← XpGem, removed missing script slot
+- EnemySpawner: types ← 3 enemies
+- saved scene
+- EnemySpawner.maxAlive 300→100
+- BasicShot.damage 10→30
+- Enemy_Runner.unlockTime 60→10
+- saved scene
+- Enemy_Tank.unlockTime 120→30 (test)
+- BUG: Enemy.gemPrefab unassigned on prefab (lost when missing-script slot removed) → enemies never died
+- Enemy.prefab: gemPrefab ← XpGem (re-assigned, verified)
+- tested: 3 enemy types, ramp, cap ✓
