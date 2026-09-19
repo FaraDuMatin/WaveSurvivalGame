@@ -10,6 +10,7 @@ public class PlayerLevel : MonoBehaviour
     public event Action OnLevelUp;
 
     float xp, xpToNext;
+    public float Progress => xp / xpToNext;
 
     void Awake() => xpToNext = baseXp;
 

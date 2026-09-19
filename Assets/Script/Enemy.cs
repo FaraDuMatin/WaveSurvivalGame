@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour
     {
         hp -= amount;
         if (hp > 0f) return;
+        GameManager.I.Kills++;
         Pool.Get(gemPrefab, transform.position, Quaternion.identity).GetComponent<XpGem>().value = Data.xp;
         Pool.Release(gameObject);
     }

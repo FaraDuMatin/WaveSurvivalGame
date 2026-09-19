@@ -167,3 +167,17 @@ Concise log of every action taken. Newest at bottom.
 - EnemySpawner obj: removed missing script, + DebugHud (spawner ref)
 - saved scene, tested F→300 alive ✓
 - commit+push
+
+## M6 — Menu, pause, game over, high score
+- script: SaveSystem.cs (Data{bestTime,bestKills}, JSON at persistentDataPath/save.json)
+- script: GameManager.cs rewritten — State enum, static I, Elapsed, Kills; Set() toggles panels + timeScale; Esc pause (ignored while level-up has ts=0); Play/Resume/Retry/Restart; GameOver saves best, guarded vs double call
+- script: Hud.cs (hp/xp fill, timer, kills+lv, weapon list)
+- PlayerHealth: + Hp prop, Die → GameManager.GameOver
+- PlayerLevel: + Progress prop
+- Enemy: death → GameManager.I.Kills++
+- scene UI (editor script): HUD (HpBar, XpBar, Timer, Kills, Weapons), MenuPanel (title, best, PLAY, hint), PausePanel (RESUME, QUIT TO MENU), GameOverPanel (result, RETRY, MENU)
+- obj GameManager: refs wired, buttons → Play/Resume/Restart/Retry/Restart
+- one scene, panels only; Restart = reload scene; Retry uses static skipMenu
+- saved scene
+- tested: menu→play→die→gameover+save.json→retry (Playing)→quit (Menu shows best) ✓
+- commit+push: M6

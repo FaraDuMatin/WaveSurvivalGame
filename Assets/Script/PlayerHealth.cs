@@ -4,6 +4,7 @@ public class PlayerHealth : MonoBehaviour
 {
     PlayerStats stats;
     float hp;
+    public float Hp => hp;
 
     void Awake()
     {
@@ -22,9 +23,5 @@ public class PlayerHealth : MonoBehaviour
         if (hp <= 0f) Die();
     }
 
-    void Die()
-    {
-        Debug.Log("Player died");
-        Time.timeScale = 0f;
-    }
+    void Die() => GameManager.I.GameOver();
 }
