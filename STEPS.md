@@ -181,3 +181,7 @@ Concise log of every action taken. Newest at bottom.
 - saved scene
 - tested: menu→play→die→gameover+save.json→retry (Playing)→quit (Menu shows best) ✓
 - commit+push: M6
+- bug: editor in-memory Player.xpMult was 0 (leftover from edit-mode test cmd, scene file had 1) → reset to 1, saved
+- PlayerLevel: + XpText "xp/next"
+- Hud: kills line now "kills N   lv N   xp 5/17"
+- commit+push

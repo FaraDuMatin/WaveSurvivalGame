@@ -11,6 +11,7 @@ public class PlayerLevel : MonoBehaviour
 
     float xp, xpToNext;
     public float Progress => xp / xpToNext;
+    public string XpText => $"{(int)xp}/{(int)xpToNext}";
 
     void Awake() => xpToNext = baseXp;
 

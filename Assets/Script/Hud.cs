@@ -22,7 +22,7 @@ public class Hud : MonoBehaviour
         hpFill.fillAmount = health.Hp / stats.maxHp;
         xpFill.fillAmount = level.Progress;
         timer.text = GameManager.Fmt(GameManager.I.Elapsed);
-        kills.text = $"kills {GameManager.I.Kills}   lv {level.Level}";
+        kills.text = $"kills {GameManager.I.Kills}   lv {level.Level}   xp {level.XpText}";
         sb.Clear();
         foreach (var w in holder.Weapons) sb.Append(w.Data.name.Replace("Weapon_", "")).Append(' ').Append(w.Level).Append('\n');
         weapons.text = sb.ToString();
