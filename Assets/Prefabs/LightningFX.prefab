@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5493661333254099551}
   - component: {fileID: 3734095051923370475}
+  - component: {fileID: 1565834793986970966}
   m_Layer: 0
   m_Name: LightningFX
   m_TagString: Untagged
@@ -91,3 +92,16 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1565834793986970966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5307724859177108814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 102183d802ad6dd4eb18ac7f963b6ad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AutoRelease
+  life: 0.15

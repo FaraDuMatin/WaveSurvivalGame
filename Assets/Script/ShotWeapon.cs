@@ -11,7 +11,7 @@ public class ShotWeapon : Weapon
         for (int i = 0; i < n; i++)
         {
             float angle = (i - (n - 1) / 2f) * Data.spreadAngle;
-            var p = Instantiate(Data.projectilePrefab, transform.position, Quaternion.identity);
+            var p = Pool.Get(Data.projectilePrefab, transform.position, Quaternion.identity);
             p.GetComponent<Projectile>().Init(Quaternion.Euler(0, 0, angle) * dir, Data.projectileSpeed, Damage);
         }
         return true;

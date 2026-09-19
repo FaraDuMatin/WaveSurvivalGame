@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
@@ -6,7 +7,8 @@ public abstract class Weapon : MonoBehaviour
     public int Level = 1;
 
     protected PlayerStats stats;
-    protected static readonly int EnemyMask = 1 << 9;
+    static readonly ContactFilter2D enemyFilter = new() { useLayerMask = true, layerMask = 1 << 9, useTriggers = true };
+    static readonly List<Collider2D> hits = new();
     float timer;
 
     public void Init(WeaponData data, PlayerStats s) { Data = data; stats = s; }
@@ -30,11 +32,17 @@ public abstract class Weapon : MonoBehaviour
     protected abstract bool Fire();
     protected virtual void Tick() { }
 
+    protected List<Collider2D> InRange()
+    {
+        Physics2D.OverlapCircle(transform.position, Range, enemyFilter, hits);
+        return hits;
+    }
+
     protected Transform Nearest()
     {
         Transform best = null;
         float bestDist = float.MaxValue;
-        foreach (var c in Physics2D.OverlapCircleAll(transform.position, Range, EnemyMask))
+        foreach (var c in InRange())
         {
             float d = (c.transform.position - transform.position).sqrMagnitude;
             if (d < bestDist) { bestDist = d; best = c.transform; }

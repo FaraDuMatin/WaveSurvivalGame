@@ -10,7 +10,7 @@ public class Boomerang : MonoBehaviour
 
     public void Init(Vector2 d, float spd, float dmg, Transform o)
     {
-        dir = d; speed = spd; owner = o;
+        dir = d; speed = spd; owner = o; t = 0f;
         GetComponent<Hitbox>().damage = dmg;
     }
 
@@ -20,7 +20,7 @@ public class Boomerang : MonoBehaviour
         transform.Rotate(0, 0, 720f * Time.deltaTime);
         if (t < outTime) { transform.position += (Vector3)dir * speed * Time.deltaTime; return; }
         Vector3 to = owner.position - transform.position;
-        if (to.sqrMagnitude < 0.25f) { Destroy(gameObject); return; }
+        if (to.sqrMagnitude < 0.25f) { Pool.Release(gameObject); return; }
         transform.position += to.normalized * speed * Time.deltaTime;
     }
 }

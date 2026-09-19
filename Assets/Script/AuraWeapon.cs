@@ -8,7 +8,7 @@ public class AuraWeapon : Weapon
     {
         if (visual == null) visual = Instantiate(Data.projectilePrefab, transform).transform;
         visual.localScale = Vector3.one * Range * 2f;
-        foreach (var c in Physics2D.OverlapCircleAll(transform.position, Range, EnemyMask))
+        foreach (var c in InRange())
             if (c.TryGetComponent(out Enemy e)) e.TakeDamage(Damage);
         return true;
     }

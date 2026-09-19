@@ -11,7 +11,7 @@ public class BoomerangWeapon : Weapon
         for (int i = 0; i < n; i++)
         {
             float angle = (i - (n - 1) / 2f) * Data.spreadAngle;
-            var b = Instantiate(Data.projectilePrefab, transform.position, Quaternion.identity);
+            var b = Pool.Get(Data.projectilePrefab, transform.position, Quaternion.identity);
             b.GetComponent<Boomerang>().Init(Quaternion.Euler(0, 0, angle) * dir, Data.projectileSpeed, Damage, transform);
         }
         return true;

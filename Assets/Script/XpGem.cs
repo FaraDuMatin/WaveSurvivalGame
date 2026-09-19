@@ -5,13 +5,16 @@ public class XpGem : MonoBehaviour
     public float value = 5f;
     [SerializeField] float magnetSpeed = 8f;
 
-    Transform player;
-    PlayerStats stats;
+    static Transform player;
+    static PlayerStats stats;
+    static PlayerLevel level;
 
-    void Start()
+    void Awake()
     {
+        if (player != null) return;
         player = GameObject.FindWithTag("Player").transform;
         stats = player.GetComponent<PlayerStats>();
+        level = player.GetComponent<PlayerLevel>();
     }
 
     void Update()
@@ -21,8 +24,8 @@ public class XpGem : MonoBehaviour
         transform.position += to.normalized * magnetSpeed * Time.deltaTime;
         if (to.sqrMagnitude < 0.1f)
         {
-            player.GetComponent<PlayerLevel>().AddXp(value);
-            Destroy(gameObject);
+            level.AddXp(value);
+            Pool.Release(gameObject);
         }
     }
 }

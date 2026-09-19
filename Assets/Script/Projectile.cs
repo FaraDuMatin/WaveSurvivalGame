@@ -8,13 +8,12 @@ public class Projectile : MonoBehaviour
     {
         damage = dmg;
         GetComponent<Rigidbody2D>().linearVelocity = dir * speed;
-        Destroy(gameObject, 3f);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.TryGetComponent(out Enemy enemy)) return;
         enemy.TakeDamage(damage);
-        Destroy(gameObject);
+        Pool.Release(gameObject);
     }
 }

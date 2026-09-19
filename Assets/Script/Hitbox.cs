@@ -8,6 +8,8 @@ public class Hitbox : MonoBehaviour
 
     Dictionary<Enemy, float> lastHit = new();
 
+    void OnEnable() => lastHit.Clear();
+
     void OnTriggerStay2D(Collider2D other)
     {
         if (!other.TryGetComponent(out Enemy e)) return;

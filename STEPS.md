@@ -143,3 +143,21 @@ Concise log of every action taken. Newest at bottom.
 - UpgradeManager.pool: + 5 (15 total: 10 passive + 5 weapon)
 - stopped play mode (user was playing), saved scene
 - commit+push: M4 complete
+
+## M5 — Pooling + profiler
+- script: Pool.cs (static, Dictionary<prefab, Stack>, Get/Release, double-release guard, clears on scene unload)
+- script: AutoRelease.cs (timed Pool.Release, replaces Destroy(go, t))
+- Enemy: gem via Pool.Get, death → Pool.Release
+- EnemySpawner/ShotWeapon/BoomerangWeapon/LightningWeapon: Instantiate → Pool.Get
+- Projectile: Destroy → Pool.Release (life via AutoRelease)
+- Boomerang: reset t in Init, Destroy → Pool.Release
+- XpGem: static cached player/stats/level, Destroy → Pool.Release
+- Hitbox: clear lastHit OnEnable
+- Weapon: OverlapCircleAll → Physics2D.OverlapCircle(filter, list) non-alloc, shared InRange() list
+- Aura/Lightning: use InRange()
+- prefabs: Projectile + AutoRelease(3s), LightningFX + AutoRelease(0.15s)
+- script: PerfLog.cs (avg/worst ms every 3s), on EnemySpawner, disabled by default
+- stress test: 300 enemies + 5 weapons → ~5-6ms/frame (170+fps) in editor; 301 enemy instances total (pool reuse ✓)
+- note: editor idles when unfocused (runInBackground off) — focus Unity while testing
+- saved scene
+- commit+push: M5

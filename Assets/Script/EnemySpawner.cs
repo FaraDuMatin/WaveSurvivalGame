@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
         var data = Pick();
         if (data == null) return;
         Vector2 pos = (Vector2)player.position + Random.insideUnitCircle.normalized * radius;
-        Instantiate(enemyPrefab, pos, Quaternion.identity).GetComponent<Enemy>().Init(data);
+        Pool.Get(enemyPrefab, pos, Quaternion.identity).GetComponent<Enemy>().Init(data);
     }
 
     EnemyData Pick()
