@@ -7,6 +7,8 @@ public static class Pool
     static readonly Dictionary<GameObject, Stack<GameObject>> pools = new();
     static readonly Dictionary<GameObject, GameObject> prefabOf = new();
 
+    public static int Total => prefabOf.Count;
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     static void Reset() { pools.Clear(); prefabOf.Clear(); SceneManager.sceneUnloaded += _ => Reset(); }
 

@@ -22,6 +22,13 @@ public class EnemySpawner : MonoBehaviour
         timer += Time.deltaTime;
         if (timer < interval || Alive >= maxAlive) return;
         timer = 0f;
+        Spawn();
+    }
+
+    public void SpawnMany(int n) { for (int i = 0; i < n; i++) Spawn(); }
+
+    void Spawn()
+    {
         var data = Pick();
         if (data == null) return;
         Vector2 pos = (Vector2)player.position + Random.insideUnitCircle.normalized * radius;

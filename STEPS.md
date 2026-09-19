@@ -161,3 +161,9 @@ Concise log of every action taken. Newest at bottom.
 - note: editor idles when unfocused (runInBackground off) — focus Unity while testing
 - saved scene
 - commit+push: M5
+- removed PerfLog; script: DebugHud.cs (OnGUI top-right: alive, pool instances, fps; F = spawn 300)
+- EnemySpawner: Spawn() extracted, + SpawnMany(n)
+- Pool: + Total (instances created)
+- EnemySpawner obj: removed missing script, + DebugHud (spawner ref)
+- saved scene, tested F→300 alive ✓
+- commit+push
