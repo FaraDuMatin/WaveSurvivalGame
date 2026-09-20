@@ -10,6 +10,7 @@ public class WeaponData : ScriptableObject
     public float cooldown = 1f;
     public float projectileSpeed = 10f;
     public float range = 8f;
+    public AudioClip fireSfx;
     public int maxLevel = 5;
     public float damagePerLevel = 0.25f;
     public int[] extraProjectileAtLevels = { 2, 4 };

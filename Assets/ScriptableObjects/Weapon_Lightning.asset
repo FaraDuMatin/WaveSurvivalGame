@@ -19,6 +19,7 @@ MonoBehaviour:
   cooldown: 1.5
   projectileSpeed: 0
   range: 9
+  fireSfx: {fileID: 8300000, guid: 41e617da18a6627409c3cd6f82f7b926, type: 3}
   maxLevel: 5
   damagePerLevel: 0.25
   extraProjectileAtLevels: 02000000030000000400000005000000

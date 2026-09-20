@@ -55,7 +55,7 @@ Broad plan per milestone. Go in depth on each when we get there.
 ## M7 — Art/audio/feel, build, publish
 - Swap cubes for sprites (free packs fine), simple animations
 - `AudioManager` — SFX pool, music loop
-- Feel: hit flash, screen shake on damage, particles on death/pickup, damage numbers, hit-stop
+- Feel: hit flash, screen shake on damage, particles on death/pickup, damage numbers
 - Camera: replace exact follow with smoothed follow (`Vector3.SmoothDamp` or Cinemachine) — exact follow feels rigid; not visible now with uniform bg
 - Build (Windows + WebGL), upload to itch.io, write the page
 - **Done when:** the itch link exists

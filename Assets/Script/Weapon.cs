@@ -26,7 +26,8 @@ public abstract class Weapon : MonoBehaviour
         Tick();
         timer += Time.deltaTime;
         if (timer < Cooldown) return;
-        if (Fire()) timer = 0f;
+        if (!Fire()) return;
+        timer = 0f; Sfx.Play(Data.fireSfx, 0.4f);
     }
 
     protected abstract bool Fire();

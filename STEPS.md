@@ -185,3 +185,37 @@ Concise log of every action taken. Newest at bottom.
 - PlayerLevel: + XpText "xp/next"
 - Hud: kills line now "kills N   lv N   xp 5/17"
 - commit+push
+- ROADMAP: removed hit-stop from M7
+
+## M7 — Art/audio/feel, build, publish
+- SaveSystem: file IO → PlayerPrefs (WebGL-safe), try/catch
+- ProjectSettings: companyName → FaraDuMatin
+- built WebGL (Builds/WebGL, compression off) → tested in browser ✓; UI tiny → CanvasScaler: ScaleWithScreenSize 960x600 match 0.5, saved scene
+- CameraFollow: SmoothDamp + static Shake(amount), decay
+- script: Flash.cs (SpriteRenderer color flash, restores on disable)
+- script: Fx.cs (static Damage/Death/Pickup → pooled prefabs)
+- script: DamageNumber.cs (TextMesh, rises + fades, pool release)
+- Enemy: flash + Fx.Damage on hit, Fx.Death(color) on kill
+- PlayerHealth: flash red + shake on damage
+- XpGem: Fx.Pickup
+- prefabs (editor script): DamageNumber (TextMesh), DeathBurst, PickupBurst (ParticleSystem + AutoRelease), Particle.mat
+- Enemy prefab + Player: + Flash; scene: + Fx obj wired
+- Player moveSpeed 5→12; XpGem magnetSpeed 8→14 (must outrun player)
+- saved scene
+- CameraFollow smooth 0.08→0 (felt laggy at speed 12), saved scene
+- CameraFollow smooth → 0.03, saved scene
+- generate_audio: fal provider not configured (needs key) → skipped
+- script: Sfx.cs (static Play(clip, vol, minInterval), 12 AudioSources, pitch var, per-clip rate cap)
+- hooks: Enemy hit/death, PlayerHealth hurt (0.3s cap), XpGem pickup, PlayerLevel levelUp, GameManager click/gameOver
+- scene: + Sfx obj (clips empty); folder Assets/Audio
+- saved scene
+- Tools/gen_sfx.py: python synth (square/sine/noise + envelope) → Assets/Audio/*.wav (7 clips)
+- Sfx obj: all 7 clips wired, saved scene
+- Assets/Audio/music.mp3 (user), import loadType Streaming
+- Sfx: + music clip, musicVol 0.4, looping AudioSource on Awake
+- Sfx obj: music wired, saved scene
+- camera ortho 5→7 (shot range 8 was off-screen vertically), spawner radius 12→15, saved scene
+- WeaponData: + fireSfx; Weapon: plays on successful Fire; gen shoot.wav/zap.wav; wired BasicShot+Boomerang=shoot, Lightning=zap
+- user: camera ortho → 10
+- UpgradeManager pool: removed Upgrade_Area; deleted asset (+meta); pool 14
+- spawner radius 15→20 (ortho 10 = 16 half-width), saved scene

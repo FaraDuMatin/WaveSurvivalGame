@@ -25,6 +25,7 @@ public class XpGem : MonoBehaviour
         if (to.sqrMagnitude < 0.1f)
         {
             level.AddXp(value);
+            Fx.Pickup(transform.position); Sfx.Play(Sfx.I.pickup, 0.5f);
             Pool.Release(gameObject);
         }
     }

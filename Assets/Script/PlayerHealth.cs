@@ -3,12 +3,14 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     PlayerStats stats;
+    Flash flash;
     float hp;
     public float Hp => hp;
 
     void Awake()
     {
         stats = GetComponent<PlayerStats>();
+        flash = GetComponent<Flash>();
         hp = stats.maxHp;
     }
 
@@ -20,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!other.TryGetComponent(out Enemy e)) return;
         hp -= Mathf.Max(0f, e.Data.damagePerSecond - stats.armor) * Time.fixedDeltaTime;
+        flash.Hit(); CameraFollow.Shake(0.08f); Sfx.Play(Sfx.I.hurt, 1f, 0.3f);
         if (hp <= 0f) Die();
     }
 

@@ -22,7 +22,7 @@ public class PlayerLevel : MonoBehaviour
         {
             xp -= xpToNext;
             xpToNext *= xpGrowth;
-            Level++;
+            Level++; Sfx.Play(Sfx.I.levelUp);
             OnLevelUp?.Invoke();
         }
     }

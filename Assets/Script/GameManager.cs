@@ -44,10 +44,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = s == State.Playing ? 1f : 0f;
     }
 
-    public void Play() => Set(State.Playing);
-    public void Resume() => Set(State.Playing);
+    public void Play() { Sfx.Play(Sfx.I.click); Set(State.Playing); }
+    public void Resume() => Play();
     public void Retry() { skipMenu = true; Restart(); }
-    public void Restart() { Time.timeScale = 1f; SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); }
+    public void Restart() { Sfx.Play(Sfx.I.click); Time.timeScale = 1f; SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); }
 
     public void GameOver()
     {
@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
         save.bestKills = Mathf.Max(save.bestKills, Kills);
         SaveSystem.Save(save);
         resultText.text = $"survived {Fmt(Elapsed)}  ·  {Kills} kills" + (newBest ? "\nNEW BEST" : "");
+        Sfx.Play(Sfx.I.gameOver);
         Set(State.GameOver);
     }
 

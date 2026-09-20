@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public EnemyData Data { get; private set; }
 
     Rigidbody2D rb;
+    Flash flash;
     Transform player;
     float hp;
 
@@ -22,6 +23,7 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        flash = GetComponent<Flash>();
         player = GameObject.FindWithTag("Player").transform;
     }
 
@@ -36,7 +38,10 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float amount)
     {
         hp -= amount;
+        flash.Hit(); Sfx.Play(Sfx.I.hit, 0.4f);
+        Fx.Damage(transform.position, amount);
         if (hp > 0f) return;
+        Fx.Death(transform.position, Data.color); Sfx.Play(Sfx.I.death, 0.6f);
         GameManager.I.Kills++;
         Pool.Get(gemPrefab, transform.position, Quaternion.identity).GetComponent<XpGem>().value = Data.xp;
         Pool.Release(gameObject);
