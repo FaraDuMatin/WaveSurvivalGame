@@ -109,3 +109,17 @@ InitTestScene*.unity*
 /[Aa]ssets/[Ss]ceneDependencyCache*
 # build output
 /Builds/
+
+# Asset Store packs (license: no redistribution) - reimport locally
+/Assets/Alebardium/
+/Assets/Alebardium.meta
+/Assets/Cainos/
+/Assets/Cainos.meta
+/Assets/Free Minerals Pixel Art Icons/
+/Assets/Free Minerals Pixel Art Icons.meta
+/Assets/Hero Knight - Pixel Art/
+/Assets/Hero Knight - Pixel Art.meta
+/Assets/Monsters Creatures Fantasy/
+/Assets/Monsters Creatures Fantasy.meta
+/Assets/Monsters Creatures Fantasy 2/
+/Assets/Monsters Creatures Fantasy 2.meta

@@ -9,5 +9,6 @@ public class EnemyData : ScriptableObject
     public float xp = 5f;
     public float scale = 1f;
     public Color color = Color.red;
+    public Sprite[] frames;
     public float unlockTime;
 }

@@ -219,3 +219,16 @@ Concise log of every action taken. Newest at bottom.
 - user: camera ortho → 10
 - UpgradeManager pool: removed Upgrade_Area; deleted asset (+meta); pool 14
 - spawner radius 15→20 (ortho 10 = 16 half-width), saved scene
+- downloaded via PM internals: Bloodlines UI, Top Down Basic, Minerals Icons, Monsters Fantasy 1+2
+- repacked pkgs (no ProjectSettings/demo scenes), extracted into Assets
+- Cainos TopDownCharacterController: API auto-update
+- script: SpriteAnim.cs (frames/idle cycle, flip by movement, random phase)
+- EnemyData: + frames; Enemy: white tint + SpriteAnim frames when set
+- Enemy prefab: + SpriteAnim
+- Grunt=Goblin Run, Runner=Flying eye Flight, Tank=Skeleton Walk
+- Player: SpriteAnim HeroKnight Run/Idle, color white, order 10
+- monster + knight sprites PPU 20
+- scene: Map grid + Ground tilemap 240x240 grass (8% flower), tint 0.8, order -100
+- saved scene
+- TMP Essentials auto-imported (Bloodlines needs TMP)
+- .gitignore: asset store pack folders (no redistribution)

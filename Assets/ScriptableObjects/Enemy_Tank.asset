@@ -18,4 +18,9 @@ MonoBehaviour:
   xp: 20
   scale: 1.6
   color: {r: 0.6, g: 0, b: 0.6, a: 1}
+  frames:
+  - {fileID: 4035959289877228764, guid: c5b15ca3a0987ac46b73e4a04e12eeb2, type: 3}
+  - {fileID: -982904232830982447, guid: c5b15ca3a0987ac46b73e4a04e12eeb2, type: 3}
+  - {fileID: -350908408369970039, guid: c5b15ca3a0987ac46b73e4a04e12eeb2, type: 3}
+  - {fileID: -5409570386352685021, guid: c5b15ca3a0987ac46b73e4a04e12eeb2, type: 3}
   unlockTime: 30

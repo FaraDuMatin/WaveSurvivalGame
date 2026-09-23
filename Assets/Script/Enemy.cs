@@ -17,7 +17,8 @@ public class Enemy : MonoBehaviour
         Data = data;
         hp = data.hp;
         transform.localScale = Vector3.one * data.scale;
-        GetComponent<SpriteRenderer>().color = data.color;
+        GetComponent<SpriteRenderer>().color = data.frames.Length > 0 ? Color.white : data.color;
+        GetComponent<SpriteAnim>().frames = data.frames;
     }
 
     void Awake()
